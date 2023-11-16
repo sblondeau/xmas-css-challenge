@@ -1,0 +1,37 @@
+:root {
+    --tree-size: 300px;
+    --tree: var(--xmas-green);
+    --trunk: brown;
+}
+
+.tree {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+
+    > div:not(.trunk) {
+        width: calc(var(--tree-size) * var(--size-modifier,1));
+        aspect-ratio: 3 / 2;
+        background-color: color-mix(in srgb, var(--tree) var(--color-modifier, 100%), white);
+        clip-path: polygon(50% 0, 100% 100%, 0 100%);
+        border-radius: 45%;
+        margin-block-start: calc(-30% *  var(--size-modifier,1));
+    }
+
+    .tree-top {
+        --size-modifier: 0.5;
+        --color-modifier: 70%;
+    }
+    .tree-middle {
+        --size-modifier: 0.75;
+        --color-modifier: 85%;
+    }
+
+    .trunk {
+        width: calc(var(--tree-size) * 0.2);
+        aspect-ratio: 1;
+        background-color: var(--trunk);
+    }
+}
+

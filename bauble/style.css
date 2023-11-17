@@ -1,0 +1,34 @@
+:root {
+    --size: 250px;
+    --fixation: gold;
+    --shadow-gradient: radial-gradient(circle at 20% 20%, white -25%, transparent 30%, black 120%);
+}
+
+.bauble {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fixation {
+    width: calc(var(--size) * 0.2);
+    aspect-ratio: 3 / 2;
+    background: var(--shadow-gradient), var(--fixation);
+    border-radius: 10%;
+    margin-block-end: -3%;
+}
+
+.sphere {
+    width: var(--size);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: 
+    var(--shadow-gradient),
+    radial-gradient(ellipse 500% 100% at 50% 0, 
+    var(--xmas-red) 0 30%, 
+    var(--fixation) 30% 33%, 
+    var(--xmas-green) 33% 57%,
+    var(--fixation) 57% 60%,
+    var(--xmas-red) 60%
+    );
+}

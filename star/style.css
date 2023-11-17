@@ -1,0 +1,61 @@
+:root {
+    --star: rgb(255, 208, 0);
+    --star2: rgb(202, 165, 0);
+    --star-size: 250px;
+}
+
+.star {
+    width: var(--star-size);
+    --radius: 50%;
+    --center: 50%;
+    aspect-ratio: 1;
+    background: repeating-conic-gradient(var(--star) 0 36deg, var(--star2) 36deg 72deg);
+    --point1X: calc(var(--center) - sin(0) * var(--radius) );
+    --point1Y: calc(var(--center) - cos(0) * var(--radius) );
+
+    --point2X: calc(var(--center) - sin(36deg) * var(--radius) / 2); 
+    --point2Y: calc(var(--center) - cos(36deg) * var(--radius) / 2);
+
+    --point3X: calc(var(--center) - sin(72deg) * var(--radius)); 
+    --point3Y: calc(var(--center) - cos(72deg) * var(--radius));
+
+    --point4X: calc(var(--center) - sin(108deg) * var(--radius) / 2);
+    --point4Y: calc(var(--center) - cos(108deg) * var(--radius) / 2);
+
+    --point5X: calc(var(--center) - sin(144deg) * var(--radius));
+    --point5Y: calc(var(--center) - cos(144deg) * var(--radius));
+
+    --point6X: calc(var(--center) - sin(180deg) * var(--radius) / 2);
+    --point6Y: calc(var(--center) - cos(180deg) * var(--radius) / 2);
+
+    --point7X: calc(var(--center) - sin(216deg) * var(--radius));
+    --point7Y: calc(var(--center) - cos(216deg) * var(--radius));
+
+    --point8X: calc(var(--center) - sin(252deg) * var(--radius) / 2);
+    --point8Y: calc(var(--center) - cos(252deg) * var(--radius) / 2);
+
+    --point9X: calc(var(--center) - sin(288deg) * var(--radius));
+    --point9Y: calc(var(--center) - cos(288deg) * var(--radius));
+
+    --point10X: calc(var(--center) - sin(324deg) * var(--radius) / 2);
+    --point10Y: calc(var(--center) - cos(324deg) * var(--radius) / 2);
+
+    clip-path: polygon(
+        var(--point1X) var(--point1Y),
+        var(--point2X) var(--point2Y),
+        var(--point3X) var(--point3Y),
+        var(--point4X) var(--point4Y),
+        var(--point5X) var(--point5Y),
+        var(--point6X) var(--point6Y),
+        var(--point7X) var(--point7Y),
+        var(--point8X) var(--point8Y),
+        var(--point9X) var(--point9Y),
+        var(--point10X) var(--point10Y)
+    );
+
+    transition: 2s ease-in-out;
+    &:hover {
+        rotate: 1turn;
+    }
+}
+

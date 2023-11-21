@@ -1,34 +1,33 @@
 :root {
-    --star: rgb(255, 208, 0);
-    --star2: rgb(202, 165, 0);
-    --branch-length: 100px;
+    --branch-color: gold;
+    --branch-color2: goldenrod;
+    --branch-size: 100px;
+
 }
 
 .star {
     display: grid;
-    & .branch {  
+
+    .branch {
         grid-column: 1;
         grid-row: 1;
-        width: calc(var(--branch-length) * sin(36deg) * 2);
-        height: calc(var(--branch-length) * cos(36deg));
-        background-color: var(--star);
+        height: calc(cos(36deg) * var(--branch-size));
+        width: calc(sin(36deg) * var(--branch-size) * 2);
+        background: linear-gradient(to right, var(--branch-color) 0 50%, var(--branch-color2) 50% 100%);
         clip-path: polygon(0 0, 50% 50%, 100% 0, 50% 100%);
-        background: linear-gradient(to right, var(--star) 50%, var(--star2) 50%);
-        transform-origin: bottom;
-        rotate: calc(72deg * var(--branch-number, 0) + 36deg);
-
+        transform-origin: center bottom;
+        rotate: calc(72deg * var(--r, 0) + 36deg);
         &:nth-child(2) {
-            --branch-number: 1;
+            --r: 1;
         }
         &:nth-child(3) {
-            --branch-number: 2;
-        }   
-        &:nth-child(4) {
-            --branch-number: 3;
+            --r: 2;
         }
+        &:nth-child(4) {
+            --r: 3;
+        } 
         &:nth-child(5) {
-            --branch-number: 4;
-        }   
-    }   
+            --r: 4;
+        }
+    }
 }
-

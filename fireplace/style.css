@@ -1,56 +1,68 @@
 :root {
     --size: 300px;
-    --mantel: rgb(109, 59, 26);
+    --fireplace: #A2472E;
+    --fireplace-dark: color-mix(in srgb, var(--fireplace) 80%, black);
 }
 
 .fireplace {
     display: flex;
     flex-direction: column;
     align-items: center;
-    .top { 
-        width: calc(var(--size) );
-        aspect-ratio: 5;
-        background-color: var(--mantel); 
-        border-radius: 5%; 
+    & .top, .bottom {
+        background-color: var(--fireplace-dark);
+        width: var(--size);
+        aspect-ratio: 6;
     }
-    .middle {
+
+    & .middle {
+        width: calc(var(--size) * 0.9);
+        aspect-ratio: 1;
+        background-color: var(--fireplace);
         display: flex;
         align-items: end;
         justify-content: center;
-        grid-template-columns: repeat(12, 1fr);
-        grid-template-rows: repeat(10, 1fr);
-        background-color: rgb(183, 58, 58);
-        width: calc(var(--size) *0.9);
-        aspect-ratio: 1;
-        .atre {
+        & .atre {
             display: flex;
             justify-content: center;
-            align-items: end;
-            width: calc(var(--size) / 2);
-            aspect-ratio: 4/5;
+           align-items: end;
             background-color: black;
-            border-radius: 100% 100% 0 0;
-            border: calc(var(--size) / 16) solid rgb(47, 47, 47);
-            .fire {
-                border-radius: 200% 20% 20% 30%;
-                background: radial-gradient(circle at center bottom, red, orange, yellow);
-                width: 50%;
-                transform: skew(15deg);
-                translate: 25%;
-                transform-origin: bottom;
-                height: 50%;
+            width: 70%;
+            aspect-ratio: 1;
+            border-radius: 50% 50% 0 0;
+            & .fire {
+                width: 20%;
+                aspect-ratio: 1 / 2;
+                background: radial-gradient(circle at bottom, red, orange, yellow);
+                border-radius: 11% 89% 40% 60% / 6% 90% 10% 94% ;
+                rotate: 10deg;
+                scale: 1.5;
+                transform-origin: center bottom;
+                animation: fire var(--duration, 1.5s) linear infinite alternate-reverse;
+                &:nth-child(1) {
+                   rotate: -5deg;
+                   scale: 1.3;
+                   translate: 50%;
+                }
                 &:nth-child(2) {
-                    transform: skew(-10deg);
-                    translate: -25%;
-                    scale: 0.8 1.1;
+                    --duration: 2.5s;
+                }
+                &:nth-child(3) {
+                    translate: -30%;
+                    scale: 1.2;
+                    --duration: 2s;
+                    rotate: 15deg;
                 }
             }
         }
     }
-    .bottom { 
-        width: calc(var(--size) ); 
+
+    .bottom {
         aspect-ratio: 10;
-        background-color: var(--mantel);
-        border-radius: 5%; 
+    }
+}
+
+@keyframes fire {
+    to {
+        border-radius: 29% 71% 28% 72% / 49% 82% 18% 51% ;
     }
 }

@@ -1,0 +1,65 @@
+:root {
+    --top-size: 100px;
+    --stick-width: 20px;
+}
+
+.candy {
+    display: grid;
+
+    .top, .top-mask {
+        grid-column: 1;
+        grid-row: 1;
+        align-self: start;
+        width: var(--top-size);
+        aspect-ratio: 1/3;
+        border-radius: 50% / 15%;
+    }
+    .top {
+        place-self: end;
+        background: repeating-conic-gradient(from -55deg at center 25%,
+                red 0 5%,
+                #ffffff 5% 10%
+        );
+        clip-path: polygon(0 0, 100% 0, 100% 20%, 0 20%);
+        z-index: 1;
+    }
+    .top-mask {
+        place-self: center;
+        width: calc(var(--top-size) - var(--stick-width) * 2);
+        translate: 0 calc(var(--stick-width) * -2);
+        background-color: var(--light);
+        z-index: 2;
+
+    }
+
+
+    .stick, .small-stick {
+        grid-column: 1;
+        grid-row: 1;
+        place-self: end;
+        align-self: start;
+        width: var(--stick-width);
+        aspect-ratio: 1/10;
+        background: repeating-linear-gradient(-30deg,
+                red 0 10%,
+                #ffffff 10% 20%);
+        border-radius: 50% / 5%;
+        z-index: 2;
+        translate: 0 15%;
+    }
+
+    .small-stick {
+        place-self: start;
+        width: var(--stick-width);
+        aspect-ratio: 1;
+        background: linear-gradient(5deg,
+                red 0 50%,
+                white 50%);
+        border-radius: 0 0 50% 50%;
+        translate: 0 calc(var(--top-size) / 2);
+        z-index: 0;
+    }
+
+
+
+}

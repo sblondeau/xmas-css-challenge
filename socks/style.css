@@ -1,0 +1,41 @@
+:root {
+    --size: 100px;
+}
+
+.socks {
+    display: grid;
+    place-items: center;
+
+    & .top, .bottom {
+        width: var(--size);
+        aspect-ratio: 1 /2;
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    & .fur {
+        width: var(--size);
+        aspect-ratio: 3;
+        background-color: white;
+        scale: 1.2;
+        z-index: 2;
+        border-radius: 25%;
+        box-shadow: 0 0 5px 15px white;
+    }
+
+    & .top {
+        background: radial-gradient(circle at right bottom, white 35%, var(--xmas-red) 35%);
+        border-radius: 0 0 50% 0 / 0 0 25% 0;
+        z-index: 1;
+    }
+
+    & .bottom {
+        background: radial-gradient(circle at top, white 25%, var(--xmas-red) 25%);
+        border-radius: 50% 50% 50% 50% / 25% 25% 25% 25%;
+        rotate: -100deg;
+        scale: 0.9;
+        transform-origin: center calc(100% - var(--size) / 2);
+        z-index: 0;
+    }
+
+}

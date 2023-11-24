@@ -1,65 +1,51 @@
 :root {
-    --top-size: 100px;
-    --stick-width: 20px;
+    --circle-size: 150px;
+    --stick-width: 30px;
+    --stick-width: 30px;
 }
 
 .candy {
     display: grid;
+    grid-template-columns: var(--stick-width) calc(var(--circle-width) - 2 * var(--stick-width)) var(--stick-width);
+    grid-template-rows: calc(var(--circle-size) / 2) 1fr;
 
-    .top, .top-mask {
-        grid-column: 1;
-        grid-row: 1;
-        align-self: start;
-        width: var(--top-size);
-        aspect-ratio: 1/3;
-        border-radius: 50% / 15%;
-    }
     .top {
-        place-self: end;
-        background: repeating-conic-gradient(from -55deg at center 25%,
-                red 0 5%,
-                #ffffff 5% 10%
-        );
-        clip-path: polygon(0 0, 100% 0, 100% 20%, 0 20%);
-        z-index: 1;
-    }
-    .top-mask {
-        place-self: center;
-        width: calc(var(--top-size) - var(--stick-width) * 2);
-        translate: 0 calc(var(--stick-width) * -2);
-        background-color: var(--light);
-        z-index: 2;
-
-    }
-
-
-    .stick, .small-stick {
-        grid-column: 1;
+        grid-column: 1 / span 3;
         grid-row: 1;
-        place-self: end;
-        align-self: start;
-        width: var(--stick-width);
-        aspect-ratio: 1/10;
-        background: repeating-linear-gradient(-30deg,
-                red 0 10%,
-                #ffffff 10% 20%);
-        border-radius: 50% / 5%;
-        z-index: 2;
-        translate: 0 15%;
-    }
-
-    .small-stick {
-        place-self: start;
-        width: var(--stick-width);
+        display: grid;
+        place-items: center;
+        width: var(--circle-size);
         aspect-ratio: 1;
-        background: linear-gradient(5deg,
-                red 0 50%,
-                white 50%);
-        border-radius: 0 0 50% 50%;
-        translate: 0 calc(var(--top-size) / 2);
-        z-index: 0;
+        border-radius: 50%;
+        background: repeating-conic-gradient(from 0deg,
+            var(--xmas-red) 0 7%, white 7% 14%
+        );
+
+        .top-mask {
+            width: calc(var(--circle-size) - var(--stick-width) * 2);
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background-color: var(--light);
+        }
+
+        clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
     }
 
+    .long-stick {
+        grid-column: 3;
+        grid-row: 2;
+        width: var(--stick-width);
+        aspect-ratio: 1 /8;
+        background: repeating-linear-gradient(-15deg, var(--xmas-red) 0 10%, white  10% 20% );
+        border-radius: 0 0 var(--stick-width) var(--stick-width);
+    }
 
-
+    .short-stick {
+        grid-column: 1;
+        grid-row: 2;
+        width: var(--stick-width);
+        aspect-ratio: 1 ;
+        background-color: var(--xmas-red);
+        border-radius: 0 0 var(--stick-width) var(--stick-width);
+    }
 }

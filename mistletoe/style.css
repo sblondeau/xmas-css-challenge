@@ -1,0 +1,101 @@
+:root {
+    --size: 150px;
+}
+
+.mistletoe {
+    display: grid;
+    place-items: center;
+
+
+    .leaf {
+        translate: -50% 50%;
+        display: grid;
+        place-items: center;
+        grid-column: 1;
+        grid-row: 1;
+        width: var(--size);
+        transform-origin: center right;
+        aspect-ratio: 2;
+        background: var(--xmas-green);
+
+
+        &:nth-child(1) {
+            rotate: -25deg;
+        }
+
+        &:nth-child(2) {
+            rotate: 90deg;
+        }
+
+        &:nth-child(3) {
+            rotate: -155deg;
+        }
+
+        & .leaf-mask {
+            grid-column: 1;
+            grid-row: 1;
+            width: calc(var(--size) / 3);
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background-color: var(--light);
+            translate: var(--x, 0) var(--y, 0);
+
+            &:nth-child(1) {
+                --x: -120%;
+                scale: 1.4 1.1;
+                --y: -50%;
+            }
+
+            &:nth-child(2) {
+                --x: -120%;
+                scale: 1.4 1.1;
+                --y: 50%;
+            }
+
+            &:nth-child(3) {
+                scale: 1.2 1;
+                --x: -10%;
+                --y: -75%;
+            }
+
+            &:nth-child(4) {
+                scale: 1.2 1;
+                --x: -10%;
+                --y: 75%;
+            }
+
+            &:nth-child(5) {
+                scale: 1.1 1;
+                --x: 90%;
+                --y: 85%;
+            }
+
+            &:nth-child(6) {
+                scale: 1.1 1;
+                --x: 90%;
+                --y: -85%;
+            }
+        }
+
+    }
+
+    .fruits {
+        display: flex;
+        flex-wrap: wrap;
+        width: calc(2 * var(--size) / 3);
+        justify-content: center;
+        align-items: center;
+        translate: 0 -50%;
+        scale: 0.8;
+
+        .fruit {
+            grid-column: 1;
+            grid-row: 1;
+            width: calc(var(--size) / 3);
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background-color: var(--xmas-red);
+            z-index: 3;
+        }
+    }
+}

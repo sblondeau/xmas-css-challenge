@@ -1,60 +1,77 @@
 :root {
-    --size: 50px;
-    --fixation-size: calc(var(--size) * 0.7);
-    --fixation: black;
+    --size: 200px;
+    --ribbon-size: 20px;
+    --gift: gold;
+    --ribbon: var(--xmas-red);
 }
 
-.garland {
-    display: flex;
-    gap: var(--size);
-    &:hover .bulb {
-        filter: brightness(130%);
-        box-shadow: 0 calc(var(--fixation-size) * -1) 50px 10px var(--color);
-        transition: 0.2s;
+.gift {
+    display: grid;
+    place-items: center;
+
+    .box {
+        grid-column: 1;
+        grid-row: 2;
+        width: var(--size);
+        aspect-ratio: 1;
+        background: var(--gift);
+        border-radius: 2%;
     }
-    .light {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        transform-origin: center calc(100% - var(--fixation-size) / 4);
 
-        & .bulb {
-            width: var(--size);
-            aspect-ratio: 1 / 2;
-            background: linear-gradient(to right, white -30%, var(--color), black 130%);
-            border-radius: 100% 100% 50% 50%;
-        }
-        &:nth-child(1) {
-            --color: var(--xmas-green);
-        }
-        &:nth-child(2) {
-            --color: var(--xmas-red);
-        }
-        &:nth-child(3) {
-            --color: blue;
-        }
-        &:nth-child(4) {
-            --color: yellow;
-        }
-        & .fixation { 
-            width: var(--fixation-size);
-            aspect-ratio: 2;
-            background-color: var(--fixation);
+    .top {
+        grid-column: 1;
+        grid-row: 2;
+        width: var(--size);
+        height: var(--ribbon-size);
+        box-shadow: 0 1px 3px -1px rgba(0, 0, 0, 0.542);
+        background-color: var(--gift);
+        scale: 1.05 1.3;
+        z-index: 0;
+        align-self: self-start;
 
-            &::after {
-                --cable-height: 5px;
-                content: "";
-                display: flex;
-                width: calc(var(--size) * 2 - var(--fixation-size));
-                height: var(--cable-height);
-                background-color: var(--fixation);
-                translate: var(--fixation-size) calc(var(--fixation-size) / 4 - var(--cable-height) / 2);
-            }
-        }
+    }
 
-        &:nth-child(odd) {
-            scale: 1 -1;
+    .ribbon {
+        z-index: 1;
+        grid-column: 1;
+        grid-row: 2;
+        width: var(--ribbon-size);
+        height: var(--size);
+        background-color: var(--ribbon);
+        box-shadow: 2px 0 5px -3px black;
+        &:nth-of-type(6) {
+            rotate: 90deg;
+        }
+    }
+
+    .top-ribbon {
+        grid-column: 1;
+        grid-row: 1;
+        background-color: transparent;
+        border: 2px solid color-mix(in srgb, var(--ribbon) 60%, black) ;
+        border-inline-start-width: 15px;
+        border-inline-end: 15px solid var(--ribbon);
+        border-block-start: 1px solid  var(--ribbon);
         
+        width: calc(var(--ribbon-size) * 3);
+        aspect-ratio: 1;
+        border-radius: 25% 100%;
+        translate: -50%;
+        &:nth-child(2) {
+            translate: 50%;
+            scale: -1 1;
         }
     }
+    .top-ribbon-middle {
+        grid-column: 1;
+        grid-row: 1;
+        background-color: var(--xmas-red);
+        width: calc(var(--ribbon-size) * 1.5);
+        aspect-ratio: 1;
+        border-radius: 50%;
+        align-self: self-end;
+        translate: 0 15%;
+        z-index: 2;
+    }
 }
+

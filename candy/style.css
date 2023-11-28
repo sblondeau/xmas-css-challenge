@@ -1,51 +1,45 @@
 :root {
     --circle-size: 150px;
     --stick-width: 30px;
-    --stick-width: 30px;
 }
 
 .candy {
     display: grid;
-    grid-template-columns: var(--stick-width) calc(var(--circle-width) - 2 * var(--stick-width)) var(--stick-width);
-    grid-template-rows: calc(var(--circle-size) / 2) 1fr;
+    grid-template-columns: var(--stick-width) calc(var(--circle-size) - 2 * var(--stick-width)) var(--stick-width);
+    grid-template-rows: calc(var(--circle-size) / 2) calc(var(--stick-width) * 8);
+.circle {
+    width: var(--circle-size);
+    aspect-ratio: 1;
+    background: repeating-conic-gradient(var(--xmas-red) 0 7%, white 7% 14%);
+    border-radius: 100%;
+    display: grid;
+    place-items: center;
 
-    .top {
-        grid-column: 1 / span 3;
-        grid-row: 1;
-        display: grid;
-        place-items: center;
-        width: var(--circle-size);
+    .mask-circle {
         aspect-ratio: 1;
-        border-radius: 50%;
-        background: repeating-conic-gradient(from 0deg,
-            var(--xmas-red) 0 7%, white 7% 14%
-        );
-
-        .top-mask {
-            width: calc(var(--circle-size) - var(--stick-width) * 2);
-            aspect-ratio: 1;
-            border-radius: 50%;
-            background-color: var(--light);
-        }
-
-        clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
+        border-radius: 100%;
+        width: calc(var(--circle-size) - 2 * var(--stick-width));
+        background-color: var(--light);
     }
 
+    clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%) ;
+}
     .long-stick {
         grid-column: 3;
         grid-row: 2;
         width: var(--stick-width);
-        aspect-ratio: 1 /8;
-        background: repeating-linear-gradient(-15deg, var(--xmas-red) 0 10%, white  10% 20% );
-        border-radius: 0 0 var(--stick-width) var(--stick-width);
+        aspect-ratio: 1 / 8;
+        background: repeating-linear-gradient(-15deg, var(--xmas-red) 0 10%, white 10% 20%);
+        border-radius: 0 0 50% 50% / 0 0 5% 5%;
     }
 
     .short-stick {
         grid-column: 1;
         grid-row: 2;
         width: var(--stick-width);
-        aspect-ratio: 1 ;
-        background-color: var(--xmas-red);
-        border-radius: 0 0 var(--stick-width) var(--stick-width);
+        aspect-ratio: 1;
+        border-radius: 0 0 50% 50%;
+        background: var(--xmas-red);
+
     }
 }

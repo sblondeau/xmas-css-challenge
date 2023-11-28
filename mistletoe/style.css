@@ -1,0 +1,85 @@
+:root {
+    --size: 120px;
+}
+
+.mistletoe {
+    display: grid;
+    place-items: center;
+
+    .leaf {
+        grid-column: 1;
+        grid-row: 1;
+        background-color: var(--xmas-green);
+        width: var(--size);
+        aspect-ratio: 2;
+        display: grid;
+        place-items: center;
+        transform-origin: right center;
+
+        & .leaf-mask {
+            grid-column: 1;
+            grid-row: 1;
+            background-color: var(--light);
+            width: calc(var(--size) / 2);
+            aspect-ratio: 2;
+            border-radius: 50%;
+
+            &:nth-child(1) {
+                translate: 50% 100%;
+            }
+
+            &:nth-child(2) {
+                translate: 50% -100%;
+            }
+
+            &:nth-child(3) {
+                translate: -50% 100%;
+            }
+
+            &:nth-child(4) {
+                translate: -50% -100%;
+            }
+
+            &:nth-child(5) {
+                width: calc(var(--size) / 3);
+                aspect-ratio: 3 / 2;
+                translate: -150% -50%;
+            }
+
+            &:nth-child(6) {
+                width: calc(var(--size) / 3);
+                aspect-ratio: 3 / 2;
+                translate: -150% 50%;
+            }
+        }
+
+        &:nth-child(2) {
+            rotate: 90deg;
+            z-index: 2;
+            translate: 0 -25%;
+        }
+
+        &:nth-child(3) {
+            rotate: 180deg;
+
+        }
+    }
+
+    .fruits {
+        grid-column: 1;
+        grid-row: 1;
+        display: flex;
+        justify-content: center;
+
+        width: calc(var(--size) / 2);
+        flex-wrap: wrap;
+        z-index: 3;
+        translate: 100%;
+        div {
+            width: calc(var(--size) / 4);
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background-color: var(--xmas-red);
+        }
+    }
+}

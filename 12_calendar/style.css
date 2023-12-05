@@ -1,0 +1,46 @@
+:root {
+    --size: 300px;
+    --case: 60px;
+    --calendar: var(--xmas-red);
+}
+
+.calendar {
+    display: grid;
+    place-items: center;
+    grid-template-columns: repeat(4, 1fr);
+    width: var(--size);
+    aspect-ratio: 2 / 3;
+    background-color: var(--calendar);
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    counter-set: num;
+
+    & div {
+        width: var(--case);
+        aspect-ratio: 1;
+        background-color: rgb(49, 49, 49);
+        transform-style: preserve-3d;
+        counter-increment: num 1;
+
+
+        &::after {
+            transition: transform 0.5s;
+            border: 1px solid #ffffff50;
+            transform-origin: 0;
+            content: counter(num);
+            display: grid;
+            place-items: center;
+            font-size: 200%;
+            color: white;
+            width: var(--case);
+            aspect-ratio: 1;
+            transform: none;
+            background-color: var(--xmas-red) ;
+
+        }
+
+        &:hover::after {
+            transform: rotateY(-80deg);
+        }
+    }
+}

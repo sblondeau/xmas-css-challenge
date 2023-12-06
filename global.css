@@ -27,6 +27,7 @@ main {
     aspect-ratio: 1;
     background-color: var(--light);
     border: 10px solid var(--xmas-green);
+    overflow: hidden;
 }
 
 header {

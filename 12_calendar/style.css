@@ -1,0 +1,41 @@
+:root {
+    --calendar: var(--xmas-red);
+    --size: 300px;
+}
+
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3%;
+    padding: 3%;
+    width: var(--size);
+    aspect-ratio: 2 / 3;
+    background-color: var(--calendar);
+    transform-style: preserve-3d;
+    perspective: 1000px;
+
+    & div {
+        transform-style: preserve-3d;
+        counter-increment: case;
+        border: 1px solid color-mix(in srgb, var(--calendar) 50%, white);
+
+        background-color: black;
+
+        &:hover::before {
+            transform: rotateY(-70deg);
+            transform-origin: left;
+            transition: transform 1s;
+        }
+
+        &::before {
+            display: grid;
+            place-items: center;
+            height: 100%;
+            font-size: 200%;
+            color: white;
+            content: counter(case);
+            background-color: color-mix(in srgb, var(--calendar) 80%, white);
+
+        }
+    }
+}

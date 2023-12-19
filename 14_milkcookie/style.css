@@ -1,0 +1,50 @@
+:root {
+    --size: 150px;
+    --glass: #bdfae5;
+    --milk: color-mix(in srgb, #bdfae5 20%, white);
+}
+
+.glass {
+    width: var(--size);
+    aspect-ratio: 1/2;
+    background: linear-gradient(-45deg, var(--glass), color-mix(in srgb, var(--glass) 90%, black));
+    border-radius: calc(var(--size) / 20);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 0 0 100% 100% / 0 0 calc(var(--size) / 5) calc(var(--size) / 5);
+
+    &::before {
+        box-sizing: border-box;
+        content: "";
+        width: 100%;
+        aspect-ratio: 4;
+        border-radius: 100%;
+        background-color: inherit;
+        border: 3px solid color-mix(in srgb, var(--glass) 95%, black);
+        translate: 0 -50%;
+    }
+
+
+    .milk {
+        width: calc(var(--size) * 0.9);
+        aspect-ratio: 2/3;
+        background-color: var(--milk);
+        border-radius: 0 0 50% 50% / 0 0 calc(var(--size) / 5) calc(var(--size) / 5);
+        display: flex;
+        flex-direction: column;
+        border-bottom: calc(var(--size) / 10) solid  var(--glass);
+
+        &::before {
+            box-sizing: border-box;
+            content: "";
+            aspect-ratio: 4;
+            width: 100%;
+            border-radius: 100%;
+            background-color: inherit;
+            border: 2px solid color-mix(in srgb, var(--milk) 96%, black);
+            translate: 0 -50%;
+        }
+    }
+}

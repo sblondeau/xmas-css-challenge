@@ -1,0 +1,71 @@
+:root {
+    --size: 150px;
+    --glass: lightblue;
+    --glass-dark: color-mix(in srgb, lightblue 80%, black);
+    --milk: white;
+    --cookie: peru;
+    --chocolat: rgb(34, 17, 5);
+}
+
+main {
+     display: flex;
+     justify-content: center;
+     align-items: flex-end;
+     padding-block-end: 50px;
+}
+.glass {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: var(--size);
+    aspect-ratio: 1/2;
+    border-radius: 0 0 10% 10%;
+    background: linear-gradient(to right, var(--glass-dark) -20%, var(--glass) 20% 80%, var(--glass-dark) 120%);
+
+    &::before {
+        content: "";
+        width: 100%;
+        aspect-ratio: 5;
+        border: 1px solid var(--glass-dark);
+        border-radius: 50%;
+        background: linear-gradient(to right, var(--glass-dark) -20%, var(--glass) 20% 80%, var(--glass-dark) 120%);
+        translate: 0 -50%;
+    }
+
+    .milk {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        width: 95%;
+        aspect-ratio: 2/3;
+        background: linear-gradient(to right, var(--glass-dark) -20%, var(--milk) 20% 80%, var(--glass-dark) 120%);
+        margin-block-end: 10%;
+        border-radius: 0 0 10% 10%;
+
+        &::before {
+            content: "";
+            width: 100%;
+            aspect-ratio: 5;
+            border: 1px solid var(--glass-dark);
+            border-radius: 50%;
+            background: linear-gradient(to right, var(--glass-dark) -20%, var(--milk) 20% 80%, var(--glass-dark) 120%);
+            translate: 0 -50%;
+        }
+    }
+}
+
+.cookie {
+    width: var(--size);
+    aspect-ratio: 2;
+    border-radius: 50%;
+    background: radial-gradient(var(--chocolat) 30%, var(--cookie) 30%);
+    background-size: calc(var(--size) / 5) calc(var(--size) / 6);
+    box-shadow: 
+    0 5px color-mix(in srgb, var(--cookie) 80%, black),
+    0 10px color-mix(in srgb, var(--cookie) 85%, black),
+    0 15px color-mix(in srgb, var(--cookie) 90%, black)
+    ;
+    translate: -25%;
+}

@@ -1,50 +1,81 @@
 :root {
     --size: 150px;
-    --glass: #bdfae5;
     --milk: color-mix(in srgb, #bdfae5 20%, white);
+    --cookie: peru;
+    --chocolate: rgb(39, 19, 5);
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-block-end: 50px;
+    transform-style: preserve-3d;
+    perspective: 1000px;
 }
 
 .glass {
-    width: var(--size);
-    aspect-ratio: 1/2;
-    background: linear-gradient(-45deg, var(--glass), color-mix(in srgb, var(--glass) 90%, black));
-    border-radius: calc(var(--size) / 20);
+    --color: #bdfae5;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    border-radius: 0 0 100% 100% / 0 0 calc(var(--size) / 5) calc(var(--size) / 5);
+    width: var(--size);
+    aspect-ratio: 1/2;
+    background: linear-gradient(to right, color-mix(in srgb, var(--color) 80%, black) -20%, var(--color) 20% 80%, color-mix(in srgb, var(--color) 80%, black) 120%);
+    border-radius: 0 0 10% 10%;
 
     &::before {
-        box-sizing: border-box;
         content: "";
+        background: inherit;
         width: 100%;
-        aspect-ratio: 4;
-        border-radius: 100%;
-        background-color: inherit;
-        border: 3px solid color-mix(in srgb, var(--glass) 95%, black);
+        aspect-ratio: 5;
+        border-radius: 50%;
+        border: 1px solid color-mix(in srgb, var(--color) 80%, black);
+        filter: brightness(105%);
         translate: 0 -50%;
     }
 
-
     .milk {
-        width: calc(var(--size) * 0.9);
-        aspect-ratio: 2/3;
-        background-color: var(--milk);
-        border-radius: 0 0 50% 50% / 0 0 calc(var(--size) / 5) calc(var(--size) / 5);
+        --color: color-mix(in srgb, #bdfae5 20%, white);
+        background: linear-gradient(to right, color-mix(in srgb, var(--color) 80%, black) -20%, var(--color) 20% 80%, color-mix(in srgb, var(--color) 80%, black) 120%);
+        width: 95%;
         display: flex;
         flex-direction: column;
-        border-bottom: calc(var(--size) / 10) solid  var(--glass);
+        align-items: center;
+        justify-content: space-between;
+        aspect-ratio: 2/3;
+        background-color: var(--milk);
+        border-radius: 0 0 10% 10%;
+        margin-block-end: 10%;
 
         &::before {
-            box-sizing: border-box;
             content: "";
-            aspect-ratio: 4;
+            background: inherit;
             width: 100%;
-            border-radius: 100%;
-            background-color: inherit;
-            border: 2px solid color-mix(in srgb, var(--milk) 96%, black);
+            aspect-ratio: 5;
+            border-radius: 50%;
+            border: 1px solid color-mix(in srgb, var(--color) 80%, black);
+            filter: brightness(105%);
             translate: 0 -50%;
         }
+
     }
+
+
+}
+
+.cookie {
+    display: grid;
+    width: var(--size);
+    aspect-ratio: 2;
+    border-radius: 100%;
+    background: radial-gradient(color-mix(in srgb, var(--chocolate) 80%, white) 5%, var(--chocolate)  25%, var(--cookie) 25%);
+    background-size: calc(var(--size) /4) calc(var(--size) / 5);
+    box-shadow: 
+     0 5px color-mix(in srgb, var(--cookie) 90%, black),
+     0 10px color-mix(in srgb, var(--cookie) 85%, black),
+     0 15px color-mix(in srgb, var(--cookie) 80%, black);
+    translate: -20%;
+    
 }
